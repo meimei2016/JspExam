@@ -1,0 +1,5 @@
+执行命令：
+mvn jetty:run
+
+数据库驱动配置文件路径：
+config/jdbcConn.properties

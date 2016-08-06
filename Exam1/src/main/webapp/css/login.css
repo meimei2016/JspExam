@@ -1,0 +1,55 @@
+.loginform{
+	margin-left: 30%;
+    width: 30%;
+    background-color: gainsboro;
+    text-align: left;
+}
+.loginInput_div{
+	text-align: center;
+	display: inline-block;
+}
+.loginInput_div{
+	display: inline-block;
+    height: 40px;
+    margin-bottom: 10px;
+    margin-left: 5%;
+    width: 90%;
+    text-align: center;
+}
+.hidden_input{
+	visibility: hidden;
+    border-radius: 6px;
+    text-align: left;
+    
+}
+.button_type{
+	background-color: #FF9800;
+    border: white 3px solid;
+    height: 40px;
+    width: 90px;
+    border-radius: 6px;
+    font-size: large;
+    font-weight: bolder;
+    color: wheat;	
+}
+.loginInput{
+	height: 33px;
+    width: 76%;
+    border-radius: 6px;
+    text-align: left;
+}
+
+.loginInput_pass{
+	text-align: left;
+    height: 33px;
+    width: 76%;
+    border-radius: 6px;
+    margin-left: 5%;
+}
+.loginInput_title_div{
+	text-align: center;
+    margin-left: 0%;
+    height: 70px;
+    font-size: 23px;
+}
+
