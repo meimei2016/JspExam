@@ -29,6 +29,11 @@ public abstract class JdbcTemplate<T>{
 		} catch (SQLException e) {
 			throw new RuntimeException(Constants.TIP_MESSAGE_SQL_WRONG,e);
 		}
+		if(!transactionSurport){
+			close(rs, ps, con);
+		}else{
+			close(rs, ps, null);
+		}
 		return list;		
 	}
 	public T queryOne(String sql,JdbcCallbackInterface<T> callback,boolean transactionSurport){		
@@ -51,7 +56,12 @@ public abstract class JdbcTemplate<T>{
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(Constants.TIP_MESSAGE_SQL_WRONG);
-		}		
+		}
+		if(!transactionSurport){
+			close(rs, ps, con);
+		}else{
+			close(rs, ps, null);
+		}
 		return t;
 	}
 	public int update(String sql,JdbcCallbackInterface<T> callback,boolean transactionSurport){
@@ -68,8 +78,30 @@ public abstract class JdbcTemplate<T>{
 				throw new RuntimeException(Constants.TIP_MESSAGE_COLLECTION_WRONG);
 			}
 		} catch (SQLException e) {
-			throw new RuntimeException(Constants.TIP_MESSAGE_SQL_WRONG);
+			throw new RuntimeException(Constants.TIP_MESSAGE_SQL_WRONG,e);
+		}
+		if(!transactionSurport){
+			close(null, ps, con);
+		}else{
+			close(null, ps, null);
 		}
 		return i;		
+	}
+	
+	public void close(ResultSet rs,PreparedStatement ps,Connection con){
+		
+		try {
+			if(rs!=null){
+				rs.close();
+			}
+			if(ps!=null){
+				ps.close();
+			}
+			if(con!=null){
+				con.close();
+			}
+		} catch (SQLException e) {				
+			e.printStackTrace();				
+		}
 	}
 }

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hand.myWeb.common.Constants;
 import com.hand.myWeb.jdbc.dao.CustomerLoginDao;
 import com.hand.myWeb.jdbc.jdbcConnection.JdbcCallbackInterface;
 import com.hand.myWeb.jdbc.jdbcConnection.JdbcTemplate;
@@ -17,7 +18,7 @@ public class CustomerLoginImpl extends JdbcTemplate<Integer> implements Customer
 		final String name=userName;		
 		JdbcTemplate<Integer> login=new CustomerLoginImpl();
 		
-		String sql="select count(customer_id) from customer where first_name=?";
+		String sql=Constants.SQL_SELECT_CUSTOMER_BY_NAME;
 		int i=login.queryOne(sql, 
 			new JdbcCallbackInterface<Integer>(){
 

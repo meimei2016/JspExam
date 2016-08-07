@@ -11,7 +11,7 @@ public class DataSourceManager {
 			}
 		} catch (SQLException e) {
 			rollback(con);
-			throw new RuntimeException("�ύʧ��");
+			throw new RuntimeException("�ύʧ��",e);
 		}
 		
 	}
@@ -22,7 +22,7 @@ public class DataSourceManager {
 				con.rollback();
 			}
 		} catch (SQLException e) {
-			throw new RuntimeException("�ع�ʧ��");
+			throw new RuntimeException("�ع�ʧ��",e);
 		}
 	}
 	
@@ -32,7 +32,7 @@ public class DataSourceManager {
 				con.close();
 			}
 		} catch (SQLException e) {
-			throw new RuntimeException("�ر�ʧ��");
+			throw new RuntimeException("�ر�ʧ��",e);
 		}		
 	}
 

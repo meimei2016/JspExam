@@ -9,7 +9,6 @@ public class FilmsManageService {
 	public List<Film>getAllFilm(boolean transactionSurport){
 		List<Film> list=new FilmsManageDao().getAllFilm(transactionSurport);
 		return list;
-		
 	}
 	
 	public int addFilm(Film f,boolean transactionSurport){
@@ -18,7 +17,7 @@ public class FilmsManageService {
 	}
 	
 	public int deleteFilm(int filmId,boolean transactionSurport){
-		int result=new FilmsManageDao().deleteFilm(filmId, transactionSurport);
+		int result=new FilmsManageDao().deleteFilmRefer(filmId, transactionSurport);
 		return result;
 	}
 }

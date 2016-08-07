@@ -24,9 +24,6 @@ public class CommomDataSource implements DataSource{
 	public Connection getConn() {
 		Connection conn=null;
 		try {
-			System.out.println(url);
-			System.out.println(userName);
-			System.out.println(password);
 			conn = DriverManager.getConnection(url, userName, password);
 			
 		} catch (SQLException e) {

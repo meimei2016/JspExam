@@ -31,12 +31,12 @@ public class LoginServlet extends HttpServlet {
 		int count=login.getUserName(userName, false);
 		if(count>0){
 			HttpSession session =request.getSession();
-			session.setAttribute("userName", userName);
-			String tipMessage="Login Success";
-			request.setAttribute("tipMessage", tipMessage);
-			request.getRequestDispatcher("resultTip.jsp").forward(request, response);
+			session.setAttribute(Constants.SESSION_USER, userName);
+			String tipMessage=Constants.TIP_MESSAGE_LOGIN_SUCCESS;
+			request.setAttribute(Constants.TIP_MESSAGE_NAME, tipMessage);
+			request.getRequestDispatcher(Constants.PAGE_RESULT_TIP).forward(request, response);
 		}else{
-			response.sendRedirect("login.jsp");
+			response.sendRedirect(Constants.PAGE_LOGIN);
 		}		
 	}
 }

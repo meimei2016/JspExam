@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hand.myWeb.bean.Film;
+import com.hand.myWeb.common.Constants;
 import com.hand.myWeb.service.FilmsManageService;
 
 public class ShowFilmsServlet extends HttpServlet {
@@ -23,7 +24,7 @@ public class ShowFilmsServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Film> filmList=new FilmsManageService().getAllFilm(false);
-		request.setAttribute("filmList", filmList);
-		request.getRequestDispatcher("showFilm.jsp").forward(request, response);
+		request.setAttribute(Constants.FILM_LIST, filmList);
+		request.getRequestDispatcher(Constants.PAGE_SHOW_FILM).forward(request, response);
 	}
 }

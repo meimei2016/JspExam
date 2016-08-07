@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hand.myWeb.bean.Language;
+import com.hand.myWeb.common.Constants;
 import com.hand.myWeb.jdbc.jdbcConnection.JdbcCallbackInterface;
 import com.hand.myWeb.jdbc.jdbcConnection.JdbcTemplate;
 
 public class LanguageManageDao extends JdbcTemplate<Language>{
 	public List<Language> getAllLanguage(boolean transactionSurport){
 		JdbcTemplate<Language> languageDao=new LanguageManageDao();
-		String sql="select * from language";
+		String sql=Constants.SQL_SELECT_ALL_LANGUAGE;
 		List<Language> list=languageDao.query(sql, 
 				new JdbcCallbackInterface<Language>(){
 
@@ -22,8 +23,9 @@ public class LanguageManageDao extends JdbcTemplate<Language>{
 				public List<Language> getResultSet(ResultSet rs) throws SQLException {
 					List<Language> list1=new ArrayList<Language>();
 					while(rs.next()){
-						list1.add(new Language(rs.getInt("language_id"),rs.getString("name"),
-						rs.getDate("last_update")));
+						list1.add(new Language(rs.getInt(Constants.TABLE_LANGUAGE_LANGUAGEID),
+								rs.getString(Constants.TABLE_FILM_NAME),
+						rs.getDate(Constants.TABLE_INVENTORY_LASTUPDATE)));
 					 }
 					return list1;
 				  }
@@ -33,7 +35,7 @@ public class LanguageManageDao extends JdbcTemplate<Language>{
 	
 	public Language getLanguage(String title, boolean transactionSurport){
 		JdbcTemplate<Language> languageDao=new LanguageManageDao();
-		String sql="select * from language where name=?";
+		String sql=Constants.SQL_SELECT_LANGUAGE_BY_NAME;
 		final String tit=title;
 		Language language=languageDao.queryOne(sql, 
 				new JdbcCallbackInterface<Language>(){
@@ -45,8 +47,9 @@ public class LanguageManageDao extends JdbcTemplate<Language>{
 				public List<Language> getResultSet(ResultSet rs) throws SQLException {
 					List<Language> list1=new ArrayList<Language>();
 					while(rs.next()){
-						list1.add(new Language(rs.getInt("language_id"),rs.getString("name"),
-						rs.getDate("last_update")));
+						list1.add(new Language(rs.getInt(Constants.TABLE_LANGUAGE_LANGUAGEID),
+								rs.getString(Constants.TABLE_FILM_NAME),
+						rs.getDate(Constants.TABLE_INVENTORY_LASTUPDATE)));
 					 }
 					return list1;
 				  }

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 
 public class SessionUtil {
 	private Map<String,HttpSession> map=new HashMap<String,HttpSession>();
-	private static HttpSession session;
+	private  HttpSession session;
 
 	public HttpSession getSession() {
 		return session;
